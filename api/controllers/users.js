@@ -36,6 +36,24 @@ exports.get_all_users =  (req, res, next) => {
         });
 };
 
+exports.Users_get_one = (req, res, next) => {
+    User.findById(req.params.userId)
+        //exec gør at find by id, bliver et promise
+        .exec()
+        .then(doc => {
+            console.log(doc);
+            if (doc) {
+                res.status(200).json(doc)
+            } else {
+                res.status(404).json({message: "not found"})
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({error: err})
+        })
+};
+
 exports.Users_create_one = (req, res, next) => {
     User.find({tlfNumber: req.body.tlfNumber})
         .exec()
