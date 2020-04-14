@@ -41,7 +41,6 @@ exports.films_create_one = (req, res, next) => {
         filmLength: req.body.filmLength,
         ageRestriction: req.body.ageRestriction,
         description: req.body.description,
-        image: req.files.image
     });
     film
         //kalder save på det objekt jeg har lavet over, så den bliver gemt i min database.

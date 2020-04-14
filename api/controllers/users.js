@@ -62,7 +62,7 @@ exports.Users_create_one = (req, res, next) => {
                 return res.status(409).json({
                     message: "telephone already in database"
                 })
-            } else {
+            } else{
                 bcrypt.hash(req.body.password, 10, (err, hash) => {
                     if (err) {
                         return res.status(500).json({
