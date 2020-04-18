@@ -14,4 +14,6 @@ router.post('/login', UserController.Users_login);
 
 router.delete('/:userId', UserController.Users_delete_one);
 
+router.patch('/:userId', UserController.Users_update_one);
+
 module.exports = router;
