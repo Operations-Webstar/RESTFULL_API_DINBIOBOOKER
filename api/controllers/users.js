@@ -37,7 +37,8 @@ exports.get_all_users =  (req, res, next) => {
 };
 
 exports.Users_get_one = (req, res, next) => {
-    User.findById(req.params.userId)
+    console.log(req.body.tlfNumber);
+    User.findOne({tlfNumber: req.body.tlfNumber})
         //exec gør at find by id, bliver et promise
         .exec()
         .then(doc => {
