@@ -14,6 +14,10 @@ exports.films_get_all = (req, res, next) => {
                     };
                     return {
                         filmName: doc.filmName,
+                        genre: doc.genre,
+                        description: doc.description,
+                        filmLength: doc.filmLength,
+                        ageRestriction: doc.ageRestriction,
                         url: info.url
                     }
                 })
