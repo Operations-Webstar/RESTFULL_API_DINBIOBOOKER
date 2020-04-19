@@ -37,7 +37,7 @@ exports.get_all_users =  (req, res, next) => {
 };
 
 exports.Users_get_one = (req, res, next) => {
-    User.findById(req.params.userId)
+    User.findOne({tlfNumber: req.body.tlfNumber})
         //exec gør at find by id, bliver et promise
         .exec()
         .then(doc => {
@@ -108,6 +108,7 @@ exports.Users_login = (req, res, next) => {
         .then( user => {
             if(user.length < 1){
                 return res.status(401).json({
+                    //email failed
                     message: "Auth failed"
                 })
             }
@@ -126,6 +127,7 @@ exports.Users_login = (req, res, next) => {
                     })
                 } else {
                     return res.status(401).json({
+                        //password failed
                         message: "Auth failed"
                     })
                 }
