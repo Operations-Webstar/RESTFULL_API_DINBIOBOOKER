@@ -75,7 +75,8 @@ exports.Users_create_one = (req, res, next) => {
                             lastName: req.body.lastName,
                             tlfNumber: req.body.tlfNumber,
                             dateOfBirth: req.body.dateOfBirth,
-                            password: hash
+                            password: hash,
+                            userType: 'standard'
                         });
                         user
                             .save()
@@ -122,6 +123,8 @@ exports.Users_login = (req, res, next) => {
                             expiresIn: "1hour"
                         });
                     return res.status(200).json({
+                        userId: user[0]._id,
+                        userType: user[0].userType,
                         message: "Auth succes",
                         token: token
                     })
