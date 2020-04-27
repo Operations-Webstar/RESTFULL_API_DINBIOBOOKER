@@ -9,7 +9,8 @@ const mongoose = require('mongoose');
 const filmRoutes = require('./api/routes/films');
 const bookingRoutes = require('./api/routes/bookings');
 const userRoutes = require('./api/routes/users');
-const cinemahallroutes = require('./api/routes/cinemahalls')
+const cinemahallRoutes = require('./api/routes/cinemahalls');
+const showingRoutes = require('./api/routes/showings');
 
 mongoose.connect('mongodb+srv://Thumas:' + process.env.MONGO_ATLAS_PW + '@dinbiobooker-nwwz8.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser :true,
@@ -36,7 +37,8 @@ app.use((req, res, next) => {
 app.use('/films', filmRoutes);
 app.use('/bookings', bookingRoutes);
 app.use('/users', userRoutes);
-app.use('/cinemahalls', cinemahallroutes);
+app.use('/cinemahalls', cinemahallRoutes);
+app.use('/showings', showingRoutes);
 
 //en funktion der bruges til at samle de resterende request op, som ikke kunne blevet fikset tidligere i koden.
 //denne bruges til at klare ikke fundet errors.

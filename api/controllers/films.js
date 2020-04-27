@@ -90,7 +90,7 @@ exports.films_get_one = (req, res, next) => {
         })
 };
 
-exports.films_update_one = (req, res, next) => {
+/*exports.films_update_one = (req, res, next) => {
     const id =  req.params.filmId;
     const updateOps = {};
     for (const ops of req.body){
@@ -107,7 +107,7 @@ exports.films_update_one = (req, res, next) => {
                 error: err
             })
         })
-};
+};*/
 
 exports.films_delete_one = (req, res, next) => {
     const id =  req.params.filmId;
