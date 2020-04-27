@@ -49,3 +49,24 @@ exports.Cinemahalls_create_one = (req, res, next) => {
             })
         });
 };
+
+exports.Cinemahall_get_one = (req, res, next) => {
+    console.log(req.body.hallName)
+    CinemaHall.find({hallName: req.body.hallName})
+        .exec()
+        .then(doc => {
+            if(doc){
+                res.status(200).json(doc)
+            } else {
+                res.status(404).json({
+                    message: 'no entries found'
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            })
+        });
+};
