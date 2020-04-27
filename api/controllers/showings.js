@@ -1,4 +1,6 @@
 const Showing = require('../modules/showing');
+const Cinemahall = require('../modules/cinemahall')
+const Film = require('../modules/film')
 
 exports.Showing_get_all = (req, res, next) => {
     Showing.find()
@@ -21,31 +23,37 @@ exports.Showing_get_all = (req, res, next) => {
 };
 
 exports.Showing_create_one = (req, res, next) => {
-    const showing = new Showing({
-        film: req.body.film,
-        dateTime: req.body.dateTime,
-        hall: req.body.hall,
-    });
-    showing
-        //kalder save på det objekt jeg har lavet over, så den bliver gemt i min database.
-        .save()
-        //hvis at save
-        .then(result => {
-            console.log(result);
-            res.status(201).json({
-                message: 'Handling POST requests to /showing',
-                createdCinemahall: {
-                    hallName: result.hallName,
-                    rows: result.rows,
-                    columns: result.columns,
-                    url: req.protocol + '://'+ req.headers.host + req.url + '/showings' + result._id
-                }
+    Film.findById(req.body.film)
+        .then(film => {
+            if(!film){
+                return res.status(404).json({
+                    message: "Film not found"
+                })
+            } else {
+                Cinemahall.findById(req.body.hall)
+                    .then(cinemahall => {
+                        if(!cinemahall){
+                            return res.status(404).json({
+                                message: 'Cinemahall not found '
+                            })
+                        }
+
+                     const showing = new Showing({
+                         film: req.body.film,
+                         dateTime: req.body.dateTime,
+                         hall: req.body.hall
+                     })
+                        return showing.save()
+                            .then(result => {
+                                res.status(201).json({
+                                    userCreated: result
+                                })
+                            }).catch(err => {
+                                res.status(500).json({
+                                    error: err
+                                })
+                            })
+                    })
+            }
             })
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                error: err
-            })
-        });
-};
+}

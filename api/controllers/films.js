@@ -18,6 +18,7 @@ exports.films_get_all = (req, res, next) => {
                         description: doc.description,
                         filmLength: doc.filmLength,
                         ageRestriction: doc.ageRestriction,
+                        filmId: doc._id,
                         url: info.url
                     }
                 })

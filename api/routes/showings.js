@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 //importer de forskellige controllers
-const showingController = require('../controllers/cinemahalls');
+const showingController = require('../controllers/showings');
 
-router.get('/', showingController.Cinemahall_get_all)
+router.get('/', showingController.Showing_get_all)
 
-router.post('/', showingController.Cinemahalls_create_one)
+router.post('/', showingController.Showing_create_one)
 
 module.exports = router;
