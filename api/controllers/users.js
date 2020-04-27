@@ -125,6 +125,7 @@ exports.Users_login = (req, res, next) => {
                     return res.status(200).json({
                         userId: user[0]._id,
                         userType: user[0].userType,
+                        dateOfBirth: user[0].dateOfBirth,
                         message: "Auth succes",
                         token: token
                     })
