@@ -20,6 +20,27 @@ exports.Showing_get_all = (req, res, next) => {
         });
 };
 
+exports.Showing_get_all_for_one_film = (req, res, next) => {
+    Showing.find({filmName: req.body.film})
+        .exec()
+        .then(docs => {
+            if(docs.length >= 0){
+                res.status(200).json(docs)
+            } else {
+                res.status(404).json({
+                    message: 'no entries found'
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            })
+        });
+};
+
+
 exports.Showing_create_one = (req, res, next) => {
     const showing = new Showing({
         film: req.body.film,
