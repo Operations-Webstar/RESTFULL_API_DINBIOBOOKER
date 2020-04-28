@@ -8,4 +8,6 @@ router.get('/', showingController.Showing_get_all)
 
 router.post('/', showingController.Showing_create_one)
 
+router.post('/s', showingController.Showing_get_all_for_one_film)
+
 module.exports = router;
