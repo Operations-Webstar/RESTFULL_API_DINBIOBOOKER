@@ -1,3 +1,4 @@
+//TODO: skrives om til at virke med Showing
 const Booking = require('../modules/booking');
 const Film = require('../modules/film');
 

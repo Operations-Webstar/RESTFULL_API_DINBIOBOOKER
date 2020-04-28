@@ -1,7 +1,7 @@
 const Showing = require('../modules/showing');
 const Cinemahall = require('../modules/cinemahall')
 const Film = require('../modules/film')
-
+//TODO: sørge for at der ikke kan være to showings med samme sal samme tid og dag
 exports.Showing_get_all = (req, res, next) => {
     Showing.find()
         .exec()

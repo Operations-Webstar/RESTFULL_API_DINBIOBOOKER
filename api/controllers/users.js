@@ -126,6 +126,9 @@ exports.Users_login = (req, res, next) => {
                         userId: user[0]._id,
                         userType: user[0].userType,
                         dateOfBirth: user[0].dateOfBirth,
+                        firstName: user[0].firstName,
+                        lastName: user[0].lastName,
+                        tlfNumber: user[0].tlfNumber,
                         message: "Auth succes",
                         token: token
                     })
