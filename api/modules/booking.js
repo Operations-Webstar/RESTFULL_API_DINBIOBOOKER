@@ -1,17 +1,18 @@
 const mongoose = require('mongoose');
 
 const bookingSchema = mongoose.Schema({
-    film: {
+    film: { //TODO: lav om til showing
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Film',
         required: true
     },
-    //seats: {
+    //seats: { //TODO: LAv om til User
         //TO DO lav seatSchema
      //type: [seatScehma],
      //required: true
     //},
-    date: {
+
+    date: { //TODO: lav om til seats
         type: String,
         required: true
     },

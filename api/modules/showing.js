@@ -6,8 +6,8 @@ const showingSchema = mongoose.Schema({
         ref: 'Film',
         required: true
     },
-    datetime: {
-        type: Date,
+    dateTime: {
+        type: String,
         required: true,
     },
     hall: {
