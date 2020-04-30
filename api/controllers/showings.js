@@ -23,7 +23,7 @@ exports.Showing_get_all = (req, res, next) => {
 };
 
 exports.Showing_get_all_for_one_film = (req, res, next) => {
-    Showing.find({filmName: req.body.film})
+        Showing.find({film: req.body.filmId})
         .exec()
         .then(docs => {
             if(docs.length >= 0){

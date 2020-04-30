@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+Schema = mongoose.Schema
 
-const showingSchema = mongoose.Schema({
+const showingSchema = new Schema({
     film: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Film',
