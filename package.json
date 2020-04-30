@@ -14,7 +14,6 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
-    "bcrypt": "^4.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
@@ -27,5 +26,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Operations-Webstar/RESTFULL_API_DINBIOBOOKER.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Operations-Webstar/RESTFULL_API_DINBIOBOOKER/issues"
+  },
+  "homepage": "https://github.com/Operations-Webstar/RESTFULL_API_DINBIOBOOKER#readme"
 }

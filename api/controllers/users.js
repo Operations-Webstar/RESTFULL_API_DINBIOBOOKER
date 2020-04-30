@@ -1,5 +1,5 @@
 const User = require('../modules/user');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 exports.get_all_users =  (req, res, next) => {
@@ -64,41 +64,43 @@ exports.Users_create_one = (req, res, next) => {
                     message: "telephone already in database"
                 })
             } else{
-                bcrypt.hash(req.body.password, 10, (err, hash) => {
-                    if (err) {
-                        return res.status(500).json({
-                            error: err,
-                        })
-                    } else {
-                        const user = new User({
-                            firstName: req.body.firstName,
-                            lastName: req.body.lastName,
-                            tlfNumber: req.body.tlfNumber,
-                            dateOfBirth: req.body.dateOfBirth,
-                            password: hash,
-                            userType: 'standard'
-                        });
-                        user
-                            .save()
-                            .then(result => {
-                                res.status(201).json({
-                                    message: 'Handling POST requests to /users',
-                                    createdUser: {
-                                        firstName: result.firstName,
-                                        lastName: result.lastName,
-                                        tlfNumber: result.tlfNumber,
-                                        dateOfBirth: result.dateOfBirth,
-                                        password: result.password,
-                                    }
-                                })
+                bcrypt.genSalt(10, function(err, salt){
+                    bcrypt.hash(req.body.password, salt, function (err, hash) {
+                        if (err) {
+                            return res.status(500).json({
+                                error: err,
                             })
-                            .catch(err => {
-                                console.log(err);
-                                res.status(500).json({
-                                    error: err
-                                })
+                        } else {
+                            const user = new User({
+                                firstName: req.body.firstName,
+                                lastName: req.body.lastName,
+                                tlfNumber: req.body.tlfNumber,
+                                dateOfBirth: req.body.dateOfBirth,
+                                password: hash,
+                                userType: 'standard'
                             });
-                    }
+                            user
+                                .save()
+                                .then(result => {
+                                    res.status(201).json({
+                                        message: 'Handling POST requests to /users',
+                                        createdUser: {
+                                            firstName: result.firstName,
+                                            lastName: result.lastName,
+                                            tlfNumber: result.tlfNumber,
+                                            dateOfBirth: result.dateOfBirth,
+                                            password: result.password,
+                                        }
+                                    })
+                                })
+                                .catch(err => {
+                                    console.log(err);
+                                    res.status(500).json({
+                                        error: err
+                                    })
+                                });
+                        }
+                    })
                 })
             }
         })
