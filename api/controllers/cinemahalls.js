@@ -51,8 +51,8 @@ exports.Cinemahalls_create_one = (req, res, next) => {
 };
 
 exports.Cinemahall_get_one = (req, res, next) => {
-    console.log(req.body.hallName)
-    CinemaHall.find({hallName: req.body.hallName})
+    console.log(req.params.hallId)
+        CinemaHall.findById(req.params.hallId)
         .exec()
         .then(doc => {
             if(doc){

@@ -8,7 +8,7 @@ const bookingSchema = new Schema({
         required: true
     },
     seats: {
-     type: String,
+     type: Array,
      required: true
     },
 
