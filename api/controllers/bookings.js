@@ -94,18 +94,25 @@ exports.Booking_create_one = (req, res, next) => {
         })
 }
 
-exports.bookings_get_one = (req, res, next) => {
-    Booking.findById(req.params.bookingId)
-        .populate('film')
+exports.bookings_get_all_seats_for_one_showing = (req, res, next) => {
+    Booking.find({showing: req.params.showingId})
+        .populate('showing')
+        .populate('user')
         .exec()
-        .then(booking => {
-            if(!booking) {
+        .then(bookings => {
+            if(!bookings) {
                 res.status(404).json({
                     message: "order not found"
                 })
             }
+            const response = {
+               products: bookings.map(booking => {
+                   return {seats: booking.seats}
+                })
+
+            }
             res.status(200).json({
-                booking: booking
+                booking: response
             })
         })
         .catch(err =>{

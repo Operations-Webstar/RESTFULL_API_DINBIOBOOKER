@@ -8,7 +8,7 @@ router.get('/', BookingsController.bookings_get_all);
 
 router.post('/', BookingsController.Booking_create_one);
 
-router.get('/:bookingId', BookingsController.bookings_get_one);
+router.get('/:showingId', BookingsController.bookings_get_all_seats_for_one_showing);
 
 router.delete('/:bookingId', BookingsController.bookings_delete_one);
 
