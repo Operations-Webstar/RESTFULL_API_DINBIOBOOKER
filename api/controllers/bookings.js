@@ -95,8 +95,6 @@ exports.Booking_create_one = (req, res, next) => {
 
 exports.bookings_get_all_seats_for_one_showing = (req, res, next) => {
     Booking.find({showing: req.params.showingId})
-        .populate('showing')
-        .populate('user')
         .exec()
         .then(bookings => {
             if(!bookings) {
