@@ -1,5 +1,5 @@
-const jwt= require('jsonwebtoken');
-//TODO: enten kommenter ud eller lav færdig
+/*const jwt= require('jsonwebtoken');
+//TODO: Kan laves skulle man lyste.
 module.exports = (req,res, next) => {
     try{
         const decoded = jwt.verify(req.body.token, process.env.JW_KEY);
@@ -10,4 +10,4 @@ module.exports = (req,res, next) => {
             message: 'Auth failed'
         })
     }
-};
+};*/

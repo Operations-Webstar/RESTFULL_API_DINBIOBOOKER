@@ -1,4 +1,3 @@
-//TODO: skrives om til at virke med Showing
 const Booking = require('../modules/booking');
 const Showing = require('../modules/showing');
 const User = require('../modules/user')

@@ -57,23 +57,33 @@ exports.Showing_create_one = (req, res, next) => {
                             return res.status(404).json({
                                 message: 'Cinemahall not found '
                             })
-                        }
-
-                     const showing = new Showing({
-                         film: req.body.film,
-                         dateTime: req.body.dateTime,
-                         hall: req.body.hall
-                     })
-                        return showing.save()
-                            .then(result => {
-                                res.status(201).json({
-                                    userCreated: result
-                                })
-                            }).catch(err => {
-                                res.status(500).json({
-                                    error: err
-                                })
+                        } else {
+                            Showing.find().then(result => {
+                                for(let i = 0; 0 < result.length; i++){
+                                    if(result[i].dateTime == req.body.dateTime && result[i].hall == req.body.hall){
+                                        return res.status(404).json({
+                                            message: 'Showing for this hall and time already exist'
+                                        })
+                                    } else{
+                                        const showing = new Showing({
+                                            film: req.body.film,
+                                            dateTime: req.body.dateTime,
+                                            hall: req.body.hall
+                                        })
+                                        return showing.save()
+                                            .then(result => {
+                                                res.status(201).json({
+                                                    userCreated: result
+                                                })
+                                            }).catch(err => {
+                                                res.status(500).json({
+                                                    error: err
+                                                })
+                                            })
+                                    }
+                                }
                             })
+                        }
                     })
             }
             })
