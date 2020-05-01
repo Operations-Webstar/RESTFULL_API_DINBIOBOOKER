@@ -12,5 +12,7 @@ router.get('/:showingId', BookingsController.bookings_get_all_seats_for_one_show
 
 router.delete('/:bookingId', BookingsController.bookings_delete_one);
 
+router.get('/find/:userId', BookingsController.bookings_get_all_for_one_user);
+
 
 module.exports = router;

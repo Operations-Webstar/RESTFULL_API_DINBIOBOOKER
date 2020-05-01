@@ -88,3 +88,26 @@ exports.Showing_create_one = (req, res, next) => {
             }
             })
 }
+
+exports.Showing_get_one = (req, res, next) => {
+    Showing.findById(req.params.showingId)
+        .populate('film')
+        .populate('hall')
+        .exec()
+        .then(showings => {
+            console.log(showings)
+            if(!showings) {
+                res.status(404).json({
+                    message: "order not found"
+                })
+            }
+            res.status(200).json({
+                showing: showings
+            })
+        })
+        .catch(err =>{
+            res.status(500).json({
+                error: err
+            })
+        })
+};

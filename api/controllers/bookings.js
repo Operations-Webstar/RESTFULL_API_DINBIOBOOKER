@@ -136,3 +136,28 @@ exports.bookings_delete_one = (req, res, next) => {
             })
         })
 };
+
+
+exports.bookings_get_all_for_one_user = (req, res, next) => {
+    console.log(req.params.userId)
+    Booking.find({user: req.params.userId})
+        .populate('showing')
+        .populate('user')
+        .exec()
+        .then(bookings => {
+            console.log(bookings)
+            if(!bookings) {
+                res.status(404).json({
+                    message: "order not found"
+                })
+            }
+            res.status(200).json({
+                booking: bookings
+            })
+        })
+        .catch(err =>{
+            res.status(500).json({
+                error: err
+            })
+        })
+};
