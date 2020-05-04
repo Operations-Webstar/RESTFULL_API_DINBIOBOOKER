@@ -59,12 +59,18 @@ exports.Showing_create_one = (req, res, next) => {
                             })
                         } else {
                             Showing.find().then(result => {
-                                for(let i = 0; 0 < result.length; i++){
+                                for(let i = 0; i < result.length; i++){
                                     if(result[i].dateTime == req.body.dateTime && result[i].hall == req.body.hall){
                                         return res.status(404).json({
                                             message: 'Showing for this hall and time already exist'
                                         })
-                                    } else{
+                                    }}
+                                let myDate = new Date(req.body.dateTime)
+                                if(new Date() >= myDate){
+                                    return res.status(404).json({
+                                        message: 'Showing cannot be in the past'
+                                    })
+                                }{
                                         const showing = new Showing({
                                             film: req.body.film,
                                             dateTime: req.body.dateTime,
@@ -81,7 +87,6 @@ exports.Showing_create_one = (req, res, next) => {
                                                 })
                                             })
                                     }
-                                }
                             })
                         }
                     })
