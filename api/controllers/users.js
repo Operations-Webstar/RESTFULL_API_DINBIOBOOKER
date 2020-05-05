@@ -172,11 +172,21 @@ exports.Users_delete_one = (req, res, next) => {
 };
 // Opdater en user.
 exports.Users_update_one = (req, res, next) => {
+    //vi finder det Id, som bliver sendt med requesten, som er i parameteren
     const id =  req.params.userId;
-    const updateOps = {};
-    for (const ops of req.body){
-        updateOps[ops.propName] = ops.value;
+    //updateOps er et tomt javascript objekt.
+    const update = {};
+
+    //laver et for loop, der kører igennem alle elemeter i req.body.
+    for (const x of req.body){
+        //vi gør brug af object bracket notation, fandt herfra: https://www.sitepoint.com/back-to-basics-javascript-object-syntax/
+        //x.propName, står for propertyname, som er det vi gerne vil have vores property til at hedde, derefter sættes dens værdi til x.value.
+        //både propName og value, er to ting, som vi sender i requesten.
+        update[x.propName] = x.value;
     }
+    //dollartegn set, bruges til at opdatere en eller anden value fundet på https://docs.mongodb.com/manual/reference/operator/update/set/
+    //så sætter vi updateOps ind, så den tager det objekt, som vi har lavet over, og finder så de properties der passer med dem i forhold til det id, den også har fået
+    //Derefter opdaterer den de properties med den nye value, findes propertien ikke, bliver den lavet.
     User.updateOne({_id: id}, {$set: updateOps})
         .exec()
         .then(result => {
