@@ -2,6 +2,7 @@ const User = require('../modules/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+// Henter alle users
 exports.get_all_users =  (req, res, next) => {
     User.find()
         .exec()
@@ -36,6 +37,7 @@ exports.get_all_users =  (req, res, next) => {
         });
 };
 
+//Henter én user
 exports.Users_get_one = (req, res, next) => {
     console.log(req.body.tlfNumber);
     User.findOne({tlfNumber: req.body.tlfNumber})
@@ -55,6 +57,7 @@ exports.Users_get_one = (req, res, next) => {
         })
 };
 
+// Opretter en bruger
 exports.Users_create_one = (req, res, next) => {
     User.find({tlfNumber: req.body.tlfNumber})
         .exec()
@@ -106,6 +109,7 @@ exports.Users_create_one = (req, res, next) => {
         })
 };
 
+//Login af en bruger
 exports.Users_login = (req, res, next) => {
     User.find({tlfNumber: req.body.tlfNumber})
         .exec()
@@ -149,6 +153,7 @@ exports.Users_login = (req, res, next) => {
         })
 };
 
+// Sletter en bruger
 exports.Users_delete_one = (req, res, next) => {
     const id =  req.params.userId;
     User.deleteOne({_id: id})
@@ -165,6 +170,7 @@ exports.Users_delete_one = (req, res, next) => {
 };
 
 //TODO: dette endpoint kunne også godt blive brugt til at opdaterer en user.
+// Opdater en user.
 exports.Users_update_one = (req, res, next) => {
     const id =  req.params.userId;
     const updateOps = {};

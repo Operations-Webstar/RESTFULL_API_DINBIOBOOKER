@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator')
 const Schema = mongoose.Schema
 
+// Skema for hvordan users lagres i databasen.
 const userSchema = new Schema({
     firstName: {
         type: String,

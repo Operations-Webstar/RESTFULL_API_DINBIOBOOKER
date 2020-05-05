@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+//importer de forskellige controllers
 const UserController = require('../controllers/users');
 
+//Opretter forskellige routes for users
 router.get('/', UserController.get_all_users);
 
 router.post("/signup", UserController.Users_create_one);

@@ -2,6 +2,7 @@ const Booking = require('../modules/booking');
 const Showing = require('../modules/showing');
 const User = require('../modules/user')
 
+//finder alle bookinger
 exports.bookings_get_all = (req, res, next) => {
     Booking.find()
         .populate('film', 'filmName')
@@ -56,7 +57,7 @@ exports.bookings_get_all = (req, res, next) => {
             })
         });
 };*/
-
+// Når der laves en booking
 exports.Booking_create_one = (req, res, next) => {
     console.log(req.body)
     Showing.findById(req.body.showing)
@@ -92,7 +93,7 @@ exports.Booking_create_one = (req, res, next) => {
             }
         })
 }
-
+// Alle sæder til en showing hentes
 exports.bookings_get_all_seats_for_one_showing = (req, res, next) => {
     Booking.find({showing: req.params.showingId})
         .exec()
@@ -119,6 +120,7 @@ exports.bookings_get_all_seats_for_one_showing = (req, res, next) => {
         })
 };
 
+//TODO: Skal nedenstående have en knap således at det bliver muligt eller fjernes?
 exports.bookings_delete_one = (req, res, next) => {
     Booking.deleteOne({_id: req.params.bookingId})
         .exec()
@@ -135,7 +137,7 @@ exports.bookings_delete_one = (req, res, next) => {
         })
 };
 
-
+// Alle bookinger for en bruger hentes
 exports.bookings_get_all_for_one_user = (req, res, next) => {
     console.log(req.params.userId)
     Booking.find({user: req.params.userId})

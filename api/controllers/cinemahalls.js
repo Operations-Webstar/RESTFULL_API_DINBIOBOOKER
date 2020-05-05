@@ -1,5 +1,6 @@
 const CinemaHall = require('../modules/cinemahall');
 
+// Alle cinemahalls hentes
 exports.Cinemahall_get_all = (req, res, next) => {
     CinemaHall.find()
         .exec()
@@ -20,6 +21,7 @@ exports.Cinemahall_get_all = (req, res, next) => {
         });
 };
 
+// Oprettelsen af en cinemahall
 exports.Cinemahalls_create_one = (req, res, next) => {
     const cinemaHall = new CinemaHall({
         hallName: req.body.hallName,
@@ -27,7 +29,7 @@ exports.Cinemahalls_create_one = (req, res, next) => {
         columns: req.body.columns,
     });
     cinemaHall
-        //kalder save på det objekt jeg har lavet over, så den bliver gemt i min database.
+        //kalder save på det objekt jeg har lavet over, så den bliver gemt i databasen.
         .save()
         //hvis at save
         .then(result => {
@@ -50,6 +52,7 @@ exports.Cinemahalls_create_one = (req, res, next) => {
         });
 };
 
+// En cinemahall hentes
 exports.Cinemahall_get_one = (req, res, next) => {
     console.log(req.params.hallId)
         CinemaHall.findById(req.params.hallId)

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 const uniqueValidator = require('mongoose-unique-validator')
 
+// Skema for hvordan films lagres i databasen.
 const filmSchema = new Schema({
     filmName: {
         type: String,

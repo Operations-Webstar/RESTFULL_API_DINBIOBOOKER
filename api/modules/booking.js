@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Skema for hvordan bookings lagres i databasen.
 const bookingSchema = new Schema({
     showing: {
         type: mongoose.Schema.Types.ObjectId,

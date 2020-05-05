@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 const checkAuth = require('../middleware/check-auth');
 
+//importer de forskellige controllers
 const FilmController = require('../controllers/films');
+
+//Opretter forskellige routes for film
 
 router.get('/', FilmController.films_get_all);
 

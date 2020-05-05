@@ -1,5 +1,6 @@
 const Film = require('../modules/film');
 
+// Henter alle film
 exports.films_get_all = (req, res, next) => {
     Film.find()
         .exec()
@@ -39,6 +40,7 @@ exports.films_get_all = (req, res, next) => {
         });
 };
 
+// Oprettelse af film
 exports.films_create_one = (req, res, next) => {
     const film = new Film({
         filmName: req.body.filmName,
@@ -73,6 +75,7 @@ exports.films_create_one = (req, res, next) => {
         });
 };
 
+// Der hentes en film.
 exports.films_get_one = (req, res, next) => {
     Film.findById(req.params.filmId)
         //exec gør at find by id, bliver et promise
@@ -109,7 +112,7 @@ exports.films_get_one = (req, res, next) => {
             })
         })
 };*/
-
+// Der slettes en film
 exports.films_delete_one = (req, res, next) => {
     const id =  req.params.filmId;
     Film.deleteOne({_id: id})

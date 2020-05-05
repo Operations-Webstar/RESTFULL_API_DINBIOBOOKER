@@ -2,6 +2,8 @@ const Showing = require('../modules/showing');
 const Cinemahall = require('../modules/cinemahall')
 const Film = require('../modules/film')
 //TODO: Mangler måske at showing fylder alt den tid som den tager.
+
+// Henter alle showings
 exports.Showing_get_all = (req, res, next) => {
     Showing.find()
         .exec()
@@ -21,7 +23,7 @@ exports.Showing_get_all = (req, res, next) => {
             })
         });
 };
-
+// Henter alle showings for en film
 exports.Showing_get_all_for_one_film = (req, res, next) => {
         Showing.find({film: req.body.filmId})
         .exec()
@@ -42,7 +44,7 @@ exports.Showing_get_all_for_one_film = (req, res, next) => {
         });
 };
 
-
+// Oprettelse af showing
 exports.Showing_create_one = (req, res, next) => {
     Film.findById(req.body.film)
         .then(film => {
@@ -94,6 +96,7 @@ exports.Showing_create_one = (req, res, next) => {
             })
 }
 
+// Henter en showing
 exports.Showing_get_one = (req, res, next) => {
     Showing.findById(req.params.showingId)
         .populate('film')

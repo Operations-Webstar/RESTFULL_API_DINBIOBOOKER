@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 const uniqueValidator = require('mongoose-unique-validator')
 
+// Skema for hvordan cinemahalls lagres i databasen.
 const cinemahallSchema = new Schema({
     hallName: {
         type: String,
