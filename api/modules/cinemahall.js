@@ -19,6 +19,7 @@ const cinemahallSchema = new Schema({
     }
 });
 
+//bruger uniquevalidator, så unique:true faktisk gør at væriden er unik i databasen.
 cinemahallSchema.plugin(uniqueValidator)
 
 module.exports = mongoose.model('Cinemahall', cinemahallSchema);

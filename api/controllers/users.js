@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // Henter alle users
+/*
 exports.get_all_users =  (req, res, next) => {
     User.find()
         .exec()
@@ -36,6 +37,7 @@ exports.get_all_users =  (req, res, next) => {
             })
         });
 };
+*/
 
 //Henter én user
 exports.Users_get_one = (req, res, next) => {

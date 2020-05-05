@@ -30,6 +30,7 @@ const userSchema = new Schema({
     }
 });
 
+//bruger uniquevalidator, så unique:true faktisk gør at væriden er unik i databasen.
 userSchema.plugin(uniqueValidator)
 
 module.exports = mongoose.model('User', userSchema);

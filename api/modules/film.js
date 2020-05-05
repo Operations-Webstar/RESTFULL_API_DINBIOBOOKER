@@ -27,6 +27,7 @@ const filmSchema = new Schema({
     },
 });
 
+//bruger uniquevalidator, så unique:true faktisk gør at væriden er unik i databasen.
 filmSchema.plugin(uniqueValidator)
 
 module.exports = mongoose.model('Film', filmSchema);

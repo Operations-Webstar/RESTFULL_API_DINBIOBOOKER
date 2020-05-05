@@ -21,7 +21,7 @@ exports.Cinemahall_get_all = (req, res, next) => {
         });
 };
 
-// Oprettelsen af en cinemahall
+// Oprettelsen af en cinemahall, bliver ikke brugt i selve programmet, men brugt til at lave cinemahalls i databasen.
 exports.Cinemahalls_create_one = (req, res, next) => {
     const cinemaHall = new CinemaHall({
         hallName: req.body.hallName,

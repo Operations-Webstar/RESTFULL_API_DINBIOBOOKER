@@ -1,5 +1,5 @@
 /*const jwt= require('jsonwebtoken');
-//TODO: Kan laves skulle man lyste.
+//Bruges ikke
 module.exports = (req,res, next) => {
     try{
         const decoded = jwt.verify(req.body.token, process.env.JW_KEY);

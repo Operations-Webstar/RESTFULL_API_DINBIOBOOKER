@@ -5,7 +5,7 @@ const router = express.Router();
 const UserController = require('../controllers/users');
 
 //Opretter forskellige routes for users
-router.get('/', UserController.get_all_users);
+//router.get('/', UserController.get_all_users);
 
 router.post("/signup", UserController.Users_create_one);
 

@@ -76,7 +76,7 @@ exports.films_create_one = (req, res, next) => {
 };
 
 // Der hentes en film.
-exports.films_get_one = (req, res, next) => {
+/*exports.films_get_one = (req, res, next) => {
     Film.findById(req.params.filmId)
         //exec gør at find by id, bliver et promise
         .exec()
@@ -92,9 +92,29 @@ exports.films_get_one = (req, res, next) => {
             console.log(err);
             res.status(500).json({error: err})
         })
-};
+};*/
 
+//Bliver ikke brugt i nuværende implementering.
+/*exports.films_update_one = (req, res, next) => {
+    const id =  req.params.filmId;
+    const updateOps = {};
+    for (const ops of req.body){
+        updateOps[ops.propName] = ops.value;
+    }
+    Film.update({_id: id}, {$set: updateOps})
+        .exec()
+        .then(result => {
+            res.status(200).json(result);
+        })
+        .catch(err =>{
+            console.log(err);
+            res.status(500).json({
+                error: err
+            })
+        })
+};*/
 // Der slettes en film
+/*
 exports.films_delete_one = (req, res, next) => {
     const id =  req.params.filmId;
     Film.deleteOne({_id: id})
@@ -108,4 +128,4 @@ exports.films_delete_one = (req, res, next) => {
                 error: err
             })
         })
-};
+};*/

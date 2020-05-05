@@ -6,7 +6,7 @@ const BookingsController = require('../controllers/bookings');
 
 //Opretter forskellige routes for bookings
 
-router.get('/', BookingsController.bookings_get_all);
+//router.get('/', BookingsController.bookings_get_all);
 
 router.post('/', BookingsController.Booking_create_one);
 

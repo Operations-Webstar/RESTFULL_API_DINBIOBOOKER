@@ -3,6 +3,7 @@ const express = require('express');
 const app = new express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+//Mongoose er et libary, der giver en masse måde at
 const mongoose = require('mongoose');
 
 //henter mine routes
@@ -13,21 +14,26 @@ const cinemahallRoutes = require('./api/routes/cinemahalls');
 const showingRoutes = require('./api/routes/showings');
 
 mongoose.connect('mongodb+srv://Thumas:' + process.env.MONGO_ATLAS_PW + '@dinbiobooker-nwwz8.mongodb.net/test?retryWrites=true&w=majority', {
+    //sættes fordi https://mongoosejs.com/docs/deprecations.html siger det.
     useNewUrlParser :true,
     useUnifiedTopology: true,
     useCreateIndex: true
 });
 
 //Middleware
-app.use(morgan('dev'));
+//morgan skulle være brugt i forhold til JWS tokens, men blev ikke til noget.
+//app.use(morgan('dev'));
+//bodyparser, gør at req.body er til at få fat i, og .json, gør at det kun er den der bliver taget imod
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+//sætter headers, så at det respons, jeg sender tilbage, har de rigtige headers, og der ikke opstår en cors error.
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin','*');
     res.setHeader('Access-Control-Allow-Headers','*');
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
     if(req.method === 'OPTIONS') {
-        res.setHeader('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+        res.setHeader('Access-Control-Allow-Methods', '*');
     }
     next()
 });
