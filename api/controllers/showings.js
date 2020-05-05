@@ -79,7 +79,7 @@ exports.Showing_create_one = (req, res, next) => {
                                         return showing.save()
                                             .then(result => {
                                                 res.status(201).json({
-                                                    userCreated: result
+                                                    showingCreated: result
                                                 })
                                             }).catch(err => {
                                                 res.status(500).json({
