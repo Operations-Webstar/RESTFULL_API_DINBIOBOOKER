@@ -168,9 +168,8 @@ exports.Users_delete_one = (req, res, next) => {
             })
         })
 };
-
-//TODO: dette endpoint kunne også godt blive brugt til at opdaterer en user.
 // Opdater en user.
+//TODO: dette endpoint kunne også godt blive brugt til at opdaterer en user.
 exports.Users_update_one = (req, res, next) => {
     const id =  req.params.userId;
     const updateOps = {};

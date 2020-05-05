@@ -94,24 +94,6 @@ exports.films_get_one = (req, res, next) => {
         })
 };
 
-/*exports.films_update_one = (req, res, next) => {
-    const id =  req.params.filmId;
-    const updateOps = {};
-    for (const ops of req.body){
-        updateOps[ops.propName] = ops.value;
-    }
-    Film.update({_id: id}, {$set: updateOps})
-        .exec()
-        .then(result => {
-            res.status(200).json(result);
-        })
-        .catch(err =>{
-            console.log(err);
-            res.status(500).json({
-                error: err
-            })
-        })
-};*/
 // Der slettes en film
 exports.films_delete_one = (req, res, next) => {
     const id =  req.params.filmId;

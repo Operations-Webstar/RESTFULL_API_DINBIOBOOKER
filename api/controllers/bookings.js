@@ -26,37 +26,6 @@ exports.bookings_get_all = (req, res, next) => {
         });
 };
 
-/*exports.bookings_create_booking = (req, res, next) => {
-    Film.findById(req.body.film)
-        .then(film => {
-            if(!film){
-                return res.status(404).json({
-                    message: "Film not found"
-                })
-            }
-            const booking = new Booking({
-                film: req.body.film,
-                //seats: res.body.seats,
-                date: req.body.date,
-            });
-            return booking
-                .save()
-        })
-        .then(result => {
-            console.log(result);
-            res.status(201).json({
-                message: 'Booking received',
-                info: req.protocol + '://'+ req.headers.host + req.url + 'bookings/' + result._id
-            })
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                message: "Booking not made",
-                error:err
-            })
-        });
-};*/
 // Når der laves en booking
 exports.Booking_create_one = (req, res, next) => {
     console.log(req.body)
