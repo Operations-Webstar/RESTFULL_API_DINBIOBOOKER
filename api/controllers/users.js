@@ -41,7 +41,6 @@ exports.get_all_users =  (req, res, next) => {
 
 //Henter én user
 exports.Users_get_one = (req, res, next) => {
-    console.log(req.body.tlfNumber);
     User.findOne({tlfNumber: req.body.tlfNumber})
         //exec gør at find by id, bliver et promise
         .exec()

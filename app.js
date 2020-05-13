@@ -1,10 +1,11 @@
 //henter pakker til brug
 const express = require('express');
 const app = new express();
-const morgan = require('morgan');
+//bliver ikke brugt
+//const morgan = require('morgan');
 const bodyParser = require('body-parser');
 //Mongoose er et libary, der giver en masse måde at
-const mongoose = require('mongoose');
+const mongoose = require('mongoose');m
 
 //henter mine routes
 const filmRoutes = require('./api/routes/films');
