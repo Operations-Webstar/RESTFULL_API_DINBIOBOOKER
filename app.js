@@ -1,8 +1,7 @@
 //henter pakker til brug
 const express = require('express');
 const app = new express();
-//bliver ikke brugt
-//const morgan = require('morgan');
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 //Mongoose er et libary, der giver en masse måde at
 const mongoose = require('mongoose');
@@ -22,8 +21,8 @@ mongoose.connect('mongodb+srv://Thumas:' + process.env.MONGO_ATLAS_PW + '@dinbio
 });
 
 //Middleware
-//morgan skulle være brugt i forhold til JWS tokens, men blev ikke til noget.
-//app.use(morgan('dev'));
+//morgan bliver brugt, så den laver status koder, til vores api, og viser de evt fejl der er.
+app.use(morgan('dev'));
 //bodyparser, gør at req.body er til at få fat i, og .json, gør at det kun er den der bliver taget imod
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
