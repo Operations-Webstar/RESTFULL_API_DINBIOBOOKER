@@ -5,7 +5,7 @@ const app = new express();
 //const morgan = require('morgan');
 const bodyParser = require('body-parser');
 //Mongoose er et libary, der giver en masse måde at
-const mongoose = require('mongoose');m
+const mongoose = require('mongoose');
 
 //henter mine routes
 const filmRoutes = require('./api/routes/films');
