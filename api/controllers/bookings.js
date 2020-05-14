@@ -6,7 +6,6 @@ const User = require('../modules/user')
 /*exports.bookings_get_all = (req, res, next) => {
     Booking.find()
         .populate('film', 'filmName')
-        .exec()
         .then(docs => {
             res.status(200).json({
                 count: docs.length,
@@ -69,7 +68,6 @@ exports.Booking_create_one = (req, res, next) => {
 // Alle sæder til en showing hentes
 exports.bookings_get_all_seats_for_one_showing = (req, res, next) => {
     Booking.find({showing: req.params.showingId})
-        .exec()
         .then(bookings => {
             if(!bookings) {
                 res.status(404).json({
@@ -97,7 +95,6 @@ exports.bookings_get_all_seats_for_one_showing = (req, res, next) => {
 exports.bookings_delete_one = (req, res, next) => {
     const id = req.params.bookingId
     Booking.deleteOne({_id: id})
-        .exec()
         .then(result => {
             res.status(201).json({
                 message: 'Booking deleted',
@@ -117,7 +114,6 @@ exports.bookings_get_all_for_one_user = (req, res, next) => {
         //bruger populate, så informationen bliver hentet fra de forskellige object id'er
         .populate('showing')
         .populate('user')
-        .exec()
         .then(bookings => {
             if(!bookings) {
                 res.status(404).json({

@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 /*
 exports.get_all_users =  (req, res, next) => {
     User.find()
-        .exec()
         .then(docs => {
             const response = {
                 count: docs.length,
@@ -43,7 +42,6 @@ exports.get_all_users =  (req, res, next) => {
 exports.Users_get_one = (req, res, next) => {
     User.findOne({tlfNumber: req.body.tlfNumber})
         //exec gør at find by id, bliver et promise
-        .exec()
         .then(doc => {
             console.log(doc);
             if (doc) {
@@ -61,7 +59,6 @@ exports.Users_get_one = (req, res, next) => {
 // Opretter en bruger
 exports.Users_create_one = (req, res, next) => {
     User.find({tlfNumber: req.body.tlfNumber})
-        .exec()
         .then(user => {
             if(user.length >= 1){
                 return res.status(409).json({
@@ -113,7 +110,6 @@ exports.Users_create_one = (req, res, next) => {
 //Login af en bruger
 exports.Users_login = (req, res, next) => {
     User.find({tlfNumber: req.body.tlfNumber})
-        .exec()
         .then( user => {
             if(user.length < 1){
                 return res.status(401).json({
@@ -158,7 +154,6 @@ exports.Users_login = (req, res, next) => {
 exports.Users_delete_one = (req, res, next) => {
     const id =  req.params.userId;
     User.deleteOne({_id: id})
-        .exec()
         .then(result => {
             res.status(200).json(result);
         })
@@ -187,7 +182,6 @@ exports.Users_update_one = (req, res, next) => {
     //så sætter vi updateOps ind, så den tager det objekt, som vi har lavet over, og finder så de properties der passer med dem i forhold til det id, den også har fået
     //Derefter opdaterer den de properties med den nye value, findes propertien ikke, bliver den lavet.
     User.updateOne({_id: id}, {$set: updateOps})
-        .exec()
         .then(result => {
             res.status(200).json(result);
         })

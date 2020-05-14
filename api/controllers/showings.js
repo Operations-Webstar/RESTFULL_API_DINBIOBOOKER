@@ -6,7 +6,6 @@ const Film = require('../modules/film')
 /*
 exports.Showing_get_all = (req, res, next) => {
     Showing.find()
-        .exec()
         .then(docs => {
             if(docs.length >= 0){
                 res.status(200).json(docs)
@@ -26,7 +25,6 @@ exports.Showing_get_all = (req, res, next) => {
 // Henter alle showings for en film
 exports.Showing_get_all_for_one_film = (req, res, next) => {
         Showing.find({film: req.body.filmId})
-        .exec()
         .then(docs => {
             if(docs.length >= 0){
                 res.status(200).json(docs)
@@ -101,7 +99,6 @@ exports.Showing_get_one = (req, res, next) => {
     Showing.findById(req.params.showingId)
         .populate('film')
         .populate('hall')
-        .exec()
         .then(showings => {
             console.log(showings)
             if(!showings) {

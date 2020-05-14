@@ -3,7 +3,6 @@ const CinemaHall = require('../modules/cinemahall');
 // Alle cinemahalls hentes
 exports.Cinemahall_get_all = (req, res, next) => {
     CinemaHall.find()
-        .exec()
         .then(docs => {
             if(docs.length >= 0){
                 res.status(200).json(docs)
@@ -56,7 +55,6 @@ exports.Cinemahalls_create_one = (req, res, next) => {
 exports.Cinemahall_get_one = (req, res, next) => {
     console.log(req.params.hallId)
         CinemaHall.findById(req.params.hallId)
-        .exec()
         .then(doc => {
             if(doc){
                 res.status(200).json(doc)
